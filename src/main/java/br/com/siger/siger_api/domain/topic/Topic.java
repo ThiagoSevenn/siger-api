@@ -1,13 +1,13 @@
-package br.com.siger.siger_api.domain;
+package br.com.siger.siger_api.domain.topic;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import br.com.siger.siger_api.domain.meeting_minutes.MeetingMinutes;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.UUID;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -18,11 +18,15 @@ import lombok.Setter;
 public class Topic {
     @Id
     @GeneratedValue
-    private Long id;
+    private UUID id;
 
     private Integer timer;
 
     private String priority;
 
     private Boolean concluded;
+
+    @ManyToOne
+    @JoinColumn(name = "meeting_minutes_id")
+    private MeetingMinutes meetingMinutes;
 }

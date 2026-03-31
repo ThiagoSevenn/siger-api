@@ -1,7 +1,8 @@
-package br.com.siger.siger_api.domain;
+package br.com.siger.siger_api.domain.user;
 
+import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
+import java.util.UUID;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -17,27 +18,21 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "tb_meeting", schema = "bd_siger")
-public class Meeting {
-    
+@Table(name = "tb_user", schema = "bd_siger")
+public class User implements Serializable {
     @Id
     @GeneratedValue
-    private Long id;
+    private UUID id;
 
     private Date registrationDate;
     private Date modificationDate;
-    private Date meetingDate;
 
-    private String title;
-    private String description;
+    private String name;
+    private String email;
+    private String password;
+    private String cpf;
     private String status;
-    private String location;
-
-    private Integer duration;
-
-    private Boolean concluded;
-
-    private List<Participant> participants;
-    
-    private MeetingMinutes meetingMinutes;
+    private String type;
+    private String registrationUser;
+    private String modificationUser;
 }

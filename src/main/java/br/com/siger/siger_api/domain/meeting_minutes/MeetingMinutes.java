@@ -1,11 +1,10 @@
-package br.com.siger.siger_api.domain;
+package br.com.siger.siger_api.domain.meeting_minutes;
 
 import java.util.List;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import br.com.siger.siger_api.domain.meeting.Meeting;
+import br.com.siger.siger_api.domain.topic.Topic;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,6 +24,10 @@ public class MeetingMinutes {
     private String objectives;
     private String agenda;  
 
-    
+    @OneToOne
+    @JoinColumn(name = "meeting_id")
+    private Meeting meeting;
+
+    @OneToMany(mappedBy = "meetingMinutes")
     List<Topic> topics;
 }
