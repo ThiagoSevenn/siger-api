@@ -1,6 +1,7 @@
 package br.com.siger.siger_api.domain.topic;
 
 import br.com.siger.siger_api.domain.meeting_minutes.MeetingMinutes;
+import br.com.siger.siger_api.enums.EnumTopicPriority;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -22,11 +23,11 @@ public class Topic {
 
     private Integer timer;
 
-    private String priority;
-
     private Boolean concluded;
 
     @ManyToOne
     @JoinColumn(name = "meeting_minutes_id")
     private MeetingMinutes meetingMinutes;
+
+    private EnumTopicPriority priority;
 }

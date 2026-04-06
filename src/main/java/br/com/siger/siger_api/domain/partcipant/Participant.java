@@ -2,6 +2,7 @@ package br.com.siger.siger_api.domain.partcipant;
 
 import br.com.siger.siger_api.domain.meeting.Meeting;
 import br.com.siger.siger_api.domain.user.User;
+import br.com.siger.siger_api.enums.EnumParticipantParticipation;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -21,8 +22,6 @@ public class Participant {
     @GeneratedValue
     private UUID id;
 
-    private String participation;
-
     @OneToOne
     @JoinColumn(name = "user_id")
     private User user;
@@ -30,4 +29,6 @@ public class Participant {
     @ManyToOne
     @JoinColumn(name = "meeting_id")
     private Meeting meeting;
+
+    private EnumParticipantParticipation participation;
 }

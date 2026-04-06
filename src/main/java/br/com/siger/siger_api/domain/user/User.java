@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.UUID;
 
+import br.com.siger.siger_api.enums.EnumUserStatus;
+import br.com.siger.siger_api.enums.EnumUserType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -31,8 +33,9 @@ public class User implements Serializable {
     private String email;
     private String password;
     private String cpf;
-    private String status;
-    private String type;
     private String registrationUser;
     private String modificationUser;
+
+    private EnumUserStatus status;
+    private EnumUserType type;
 }

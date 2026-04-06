@@ -1,6 +1,7 @@
 package br.com.siger.siger_api.domain.meeting_minutes;
 
 import java.util.List;
+import java.util.UUID;
 
 import br.com.siger.siger_api.domain.meeting.Meeting;
 import br.com.siger.siger_api.domain.topic.Topic;
@@ -19,7 +20,7 @@ import lombok.Setter;
 public class MeetingMinutes {
     @Id
     @GeneratedValue
-    private Long id;
+    private UUID id;
 
     private String objectives;
     private String agenda;  

@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.UUID;
 
 import br.com.siger.siger_api.domain.partcipant.Participant;
+import br.com.siger.siger_api.enums.EnumMeetingStatus;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -28,13 +29,12 @@ public class Meeting {
 
     private String title;
     private String description;
-    private String status;
     private String location;
 
     private Integer duration;
 
-    private Boolean concluded;
-
     @OneToMany(mappedBy = "meeting")
     private List<Participant> participants;
+
+    private EnumMeetingStatus status;
 }
