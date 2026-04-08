@@ -5,9 +5,10 @@ import lombok.Getter;
 
 @AllArgsConstructor
 @Getter
-public enum EnumUserType {
-    ADMIN("Admin"),
-    ORGANIZADOR("Organizador");
+public enum EnumParticipantRole {
+    ORGANIZADOR("organizador"),
+    PARTICIPANTE("participante"),
+    PALESTRANTE("palestrante");
 
     private String description;
 }
