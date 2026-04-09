@@ -2,9 +2,14 @@ package br.com.siger.siger_api.model;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import br.com.siger.siger_api.enums.EnumUserStatus;
 import br.com.siger.siger_api.enums.EnumUserType;
@@ -21,7 +26,7 @@ import lombok.*;
 @EqualsAndHashCode(callSuper = false)
 @Entity
 @Table(name = "tb_user", schema = "bd_siger")
-public class User extends GenericBaseModel<Long> {
+public class User extends GenericBaseModel<Long> implements UserDetails{
 
     @NotNull
     @Column(name = "created_at")
@@ -84,4 +89,23 @@ public class User extends GenericBaseModel<Long> {
 
     @OneToOne(mappedBy = "user")
     private Participant participant;
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        if (type == EnumUserType.ADMIN)
+            return List.of(new SimpleGrantedAuthority("ROLE_ADMIN"), new SimpleGrantedAuthority("ROLE_ORGANIZADOR"));
+        else
+            return List.of(new SimpleGrantedAuthority("ROLE_ORGANIZADOR"));
+    }
+
+    @Override
+    public String getUsername() {
+        return email;
+    }
+
+    @Override
+    public String getPassword(){
+        return password;
+    }
+
 }
