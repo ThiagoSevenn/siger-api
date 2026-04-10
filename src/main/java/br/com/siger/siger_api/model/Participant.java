@@ -5,11 +5,9 @@ import br.com.siger.siger_api.enums.EnumParticipantRole;
 import br.com.siger.siger_api.global.model.GenericBaseModel;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import lombok.*;
 
 import java.util.List;
-import java.util.UUID;
 
 @NoArgsConstructor
 @AllArgsConstructor

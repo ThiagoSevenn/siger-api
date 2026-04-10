@@ -1,9 +1,7 @@
 package br.com.siger.siger_api.model;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
-import java.util.UUID;
 
 import br.com.siger.siger_api.enums.EnumMeetingStatus;
 import br.com.siger.siger_api.global.model.GenericBaseModel;

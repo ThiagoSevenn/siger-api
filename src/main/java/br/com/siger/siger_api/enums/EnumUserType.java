@@ -7,7 +7,8 @@ import lombok.Getter;
 @Getter
 public enum EnumUserType {
     ADMIN("Admin"),
-    ORGANIZADOR("Organizador");
+    ORGANIZADOR("Organizador"),
+    PARTICIPANTE("Participante");
 
     private String description;
 }
