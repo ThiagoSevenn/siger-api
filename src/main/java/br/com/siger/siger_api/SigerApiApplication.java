@@ -10,4 +10,5 @@ public class SigerApiApplication {
 		SpringApplication.run(SigerApiApplication.class, args);
 	}
 
+
 }

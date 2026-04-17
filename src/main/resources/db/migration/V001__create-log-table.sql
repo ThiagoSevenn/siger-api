@@ -1,0 +1,6 @@
+CREATE TABLE tb_log(
+    id BIGSERIAL PRIMARY KEY,
+    operation VARCHAR(100) NOT NULL,
+    user_name VARCHAR(100) NOT NULL,
+    date TIMESTAMP NOT NULL
+);
