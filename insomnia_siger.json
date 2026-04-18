@@ -1,0 +1,236 @@
+{
+  "_type": "export",
+  "__export_format": 4,
+  "__export_date": "2026-04-17",
+  "__export_source": "insomnia",
+  "resources": [
+    {
+      "_id": "wrk_siger",
+      "_type": "workspace",
+      "name": "SIGER API",
+      "description": "Sistema Inteligente de Gerenciamento de Reuniões"
+    },
+    {
+      "_id": "env_base",
+      "_type": "environment",
+      "parentId": "wrk_siger",
+      "name": "Base Environment",
+      "data": {
+        "base_url": "http://localhost:8080",
+        "token": ""
+      }
+    },
+
+    {
+      "_id": "fld_auth",
+      "_type": "request_group",
+      "parentId": "wrk_siger",
+      "name": "Auth"
+    },
+    {
+      "_id": "req_login",
+      "_type": "request",
+      "parentId": "fld_auth",
+      "name": "Login",
+      "method": "POST",
+      "url": "{{ base_url }}/auth/login",
+      "headers": [{ "name": "Content-Type", "value": "application/json" }],
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"email\": \"admin@siger.com\",\n  \"password\": \"123456\"\n}"
+      }
+    },
+    {
+      "_id": "req_forgot_password",
+      "_type": "request",
+      "parentId": "fld_auth",
+      "name": "Forgot Password",
+      "method": "POST",
+      "url": "{{ base_url }}/auth/forgot-password",
+      "headers": [{ "name": "Content-Type", "value": "application/json" }],
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"email\": \"admin@siger.com\"\n}"
+      }
+    },
+    {
+      "_id": "req_reset_password",
+      "_type": "request",
+      "parentId": "fld_auth",
+      "name": "Reset Password",
+      "method": "POST",
+      "url": "{{ base_url }}/auth/reset-password",
+      "headers": [{ "name": "Content-Type", "value": "application/json" }],
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"token\": \"cole-aqui-o-uuid-recebido-no-email\",\n  \"newPassword\": \"novaSenha123\"\n}"
+      }
+    },
+
+    {
+      "_id": "fld_user",
+      "_type": "request_group",
+      "parentId": "wrk_siger",
+      "name": "Usuário"
+    },
+    {
+      "_id": "req_user_create",
+      "_type": "request",
+      "parentId": "fld_user",
+      "name": "Criar Usuário",
+      "method": "POST",
+      "url": "{{ base_url }}/api/user",
+      "headers": [{ "name": "Content-Type", "value": "application/json" }],
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"name\": \"Administrador\",\n  \"email\": \"admin@siger.com\",\n  \"password\": \"123456\",\n  \"cpf\": \"12345678901\",\n  \"phone\": \"11999999999\",\n  \"createdBy\": \"sistema\",\n  \"updatedBy\": \"sistema\",\n  \"createdAt\": \"2026-04-17T00:00:00\",\n  \"updatedAt\": \"2026-04-17T00:00:00\",\n  \"lastLogin\": \"2026-04-17T00:00:00\",\n  \"status\": \"ATIVO\",\n  \"type\": \"ADMIN\"\n}"
+      }
+    },
+    {
+      "_id": "req_user_findall",
+      "_type": "request",
+      "parentId": "fld_user",
+      "name": "Listar Usuários (ADMIN)",
+      "method": "GET",
+      "url": "{{ base_url }}/api/user/findAll",
+      "headers": [{ "name": "Authorization", "value": "Bearer {{ token }}" }]
+    },
+    {
+      "_id": "req_user_findbyid",
+      "_type": "request",
+      "parentId": "fld_user",
+      "name": "Buscar Usuário por ID (ADMIN)",
+      "method": "GET",
+      "url": "{{ base_url }}/api/user/1",
+      "headers": [{ "name": "Authorization", "value": "Bearer {{ token }}" }]
+    },
+
+    {
+      "_id": "fld_meeting",
+      "_type": "request_group",
+      "parentId": "wrk_siger",
+      "name": "Reunião"
+    },
+    {
+      "_id": "req_meeting_create",
+      "_type": "request",
+      "parentId": "fld_meeting",
+      "name": "Criar Reunião",
+      "method": "POST",
+      "url": "{{ base_url }}/api/meeting",
+      "headers": [
+        { "name": "Content-Type", "value": "application/json" },
+        { "name": "Authorization", "value": "Bearer {{ token }}" }
+      ],
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"title\": \"Reunião de Planejamento\",\n  \"description\": \"Planejamento do próximo sprint\",\n  \"location\": \"Sala 1\",\n  \"duration\": 60,\n  \"meetingDate\": \"2026-04-20T10:00:00\",\n  \"status\": \"NAO_INICIADO\",\n  \"createdAt\": \"2026-04-17T00:00:00\",\n  \"updatedAt\": \"2026-04-17T00:00:00\",\n  \"createdBy\": \"admin\",\n  \"updatedBy\": \"admin\"\n}"
+      }
+    },
+    {
+      "_id": "req_meeting_findall",
+      "_type": "request",
+      "parentId": "fld_meeting",
+      "name": "Listar Reuniões",
+      "method": "GET",
+      "url": "{{ base_url }}/api/meeting/findAll",
+      "headers": [{ "name": "Authorization", "value": "Bearer {{ token }}" }]
+    },
+
+    {
+      "_id": "fld_participant",
+      "_type": "request_group",
+      "parentId": "wrk_siger",
+      "name": "Participante"
+    },
+    {
+      "_id": "req_participant_create",
+      "_type": "request",
+      "parentId": "fld_participant",
+      "name": "Adicionar Participante",
+      "method": "POST",
+      "url": "{{ base_url }}/api/participant",
+      "headers": [
+        { "name": "Content-Type", "value": "application/json" },
+        { "name": "Authorization", "value": "Bearer {{ token }}" }
+      ],
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"role\": \"PARTICIPANTE\",\n  \"participation\": \"CONFIRMADO\"\n}"
+      }
+    },
+    {
+      "_id": "req_participant_findall",
+      "_type": "request",
+      "parentId": "fld_participant",
+      "name": "Listar Participantes",
+      "method": "GET",
+      "url": "{{ base_url }}/api/participant/findAll",
+      "headers": [{ "name": "Authorization", "value": "Bearer {{ token }}" }]
+    },
+
+    {
+      "_id": "fld_minutes",
+      "_type": "request_group",
+      "parentId": "wrk_siger",
+      "name": "Ata de Reunião"
+    },
+    {
+      "_id": "req_minutes_create",
+      "_type": "request",
+      "parentId": "fld_minutes",
+      "name": "Criar Ata",
+      "method": "POST",
+      "url": "{{ base_url }}/api/meeting/minutes",
+      "headers": [
+        { "name": "Content-Type", "value": "application/json" },
+        { "name": "Authorization", "value": "Bearer {{ token }}" }
+      ],
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"objectives\": \"Definir metas do sprint\",\n  \"notes\": \"Discussão sobre backlog\",\n  \"decision\": \"Aprovado escopo inicial\"\n}"
+      }
+    },
+    {
+      "_id": "req_minutes_findall",
+      "_type": "request",
+      "parentId": "fld_minutes",
+      "name": "Listar Atas",
+      "method": "GET",
+      "url": "{{ base_url }}/api/meeting/minutes/findAll",
+      "headers": [{ "name": "Authorization", "value": "Bearer {{ token }}" }]
+    },
+
+    {
+      "_id": "fld_topic",
+      "_type": "request_group",
+      "parentId": "wrk_siger",
+      "name": "Tópico"
+    },
+    {
+      "_id": "req_topic_create",
+      "_type": "request",
+      "parentId": "fld_topic",
+      "name": "Criar Tópico",
+      "method": "POST",
+      "url": "{{ base_url }}/api/topic",
+      "headers": [
+        { "name": "Content-Type", "value": "application/json" },
+        { "name": "Authorization", "value": "Bearer {{ token }}" }
+      ],
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"title\": \"Revisão de backlog\",\n  \"timer\": 15,\n  \"orderIndex\": 1,\n  \"concluded\": false,\n  \"priority\": \"ALTA\"\n}"
+      }
+    },
+    {
+      "_id": "req_topic_findall",
+      "_type": "request",
+      "parentId": "fld_topic",
+      "name": "Listar Tópicos",
+      "method": "GET",
+      "url": "{{ base_url }}/api/topic/findAll",
+      "headers": [{ "name": "Authorization", "value": "Bearer {{ token }}" }]
+    }
+  ]
+}
