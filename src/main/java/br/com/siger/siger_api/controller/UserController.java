@@ -9,6 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 @Tag(name = "Usuário")
 @RestController
-@RequestMapping("/api/user")
+@RequestMapping("/user")
 public class UserController extends GenericBaseController<UserService, User, Long> {
 }

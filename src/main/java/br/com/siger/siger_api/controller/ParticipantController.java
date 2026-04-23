@@ -9,6 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 @Tag(name = "Participante")
 @RestController
-@RequestMapping("/api/participant")
+@RequestMapping("/participant")
 public class ParticipantController extends GenericBaseController<ParticipantService, Participant, Long> {
 }
