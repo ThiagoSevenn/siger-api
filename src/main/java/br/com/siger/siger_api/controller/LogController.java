@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 @Tag(name = "Log")
 @RestController
-@RequestMapping("/api/log")
+@RequestMapping("/log")
 public class LogController {
 
     @Autowired

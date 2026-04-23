@@ -9,6 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 @Tag(name = "Reunião")
 @RestController
-@RequestMapping("/api/meeting")
+@RequestMapping("/meeting")
 public class MeetingController extends GenericBaseController<MeetingService, Meeting, Long> {
 }

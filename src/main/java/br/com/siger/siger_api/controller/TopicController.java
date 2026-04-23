@@ -9,6 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 @Tag(name = "Tópico")
 @RestController
-@RequestMapping("/api/topic")
+@RequestMapping("/topic")
 public class TopicController extends GenericBaseController<TopicService, Topic, Long> {
 }
