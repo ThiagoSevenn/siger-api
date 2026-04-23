@@ -1,0 +1,82 @@
+spring:
+  application:
+    name: siger-api
+  security:
+    token:
+      secret: ${JWT_SECRET:my-secret-key}
+  datasource:
+    url: jdbc:postgresql://localhost:5433/postgres
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      schema: bd_siger
+      connection-timeout: 20000
+      minimum-idle: 2
+      maximum-pool-size: 4
+      idle-timeout: 20000
+      max-lifetime: 600000
+  jpa:
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+    properties:
+      hibernate:
+        "[format_sql]": true
+        "[default_schema]": bd_siger
+        temp:
+          "[use_jdbc_metadata_defaults]": false
+        jdbc:
+          "[time_zone]": America/Sao_Paulo
+  jackson:
+    time-zone: America/Sao_Paulo
+  flyway:
+    locations: classpath:db/migration
+    schemas: bd_siger
+  mail:
+    host: sandbox.smtp.mailtrap.io
+    port: 2525
+    username: 87d64d71d6b4bb
+    password: d4220c6d9486e8
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+server:
+  port: 8080
+  max-http-request-header-size: 10MB
+  tomcat:
+    max-swallow-size: 10MB
+    threads:
+      max: 200
+  servlet:
+    context-path: /api
+
+springdoc:
+  swagger-ui:
+    oauth:
+      client-id: siger-swagger
+      client-secret: manga
+      use-pkce-with-authorization-code-grant: true
+      use-basic-authentication-with-access-code-grant: true
+
+management:
+  endpoints:
+    enabled-by-default: false
+    web:
+      exposure:
+        include: 'info,metrics,health'
+  info:
+    env:
+      enabled: true
+  endpoint:
+    info:
+      enabled: true
+    metrics:
+      enabled: true
+    health:
+      enabled: true
+      show-details: always
