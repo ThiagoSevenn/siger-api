@@ -33,6 +33,17 @@ spring:
   flyway:
     locations: classpath:db/migration
     schemas: bd_siger
+  mail:
+    host: sandbox.smtp.mailtrap.io
+    port: 2525
+    username: 87d64d71d6b4bb
+    password: d4220c6d9486e8
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
 
 server:
   port: 8080
