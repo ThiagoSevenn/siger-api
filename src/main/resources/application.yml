@@ -44,6 +44,10 @@ spring:
           auth: true
           starttls:
             enable: true
+  gemini:
+    api:
+      key: "AIzaSyBPCURLJ-raa9SAdIQuegEt2vtpjQtB2z4"
+
 
 server:
   port: 8080
