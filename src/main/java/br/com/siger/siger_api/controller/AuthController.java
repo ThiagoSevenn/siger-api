@@ -1,5 +1,6 @@
 package br.com.siger.siger_api.controller;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -18,6 +19,7 @@ import br.com.siger.siger_api.service.PasswordResetService;
 import br.com.siger.siger_api.service.TokenService;
 import jakarta.validation.Valid;
 
+@Tag(name = "Autenticação")
 @RestController
 @RequestMapping("/auth")
 public class AuthController {
