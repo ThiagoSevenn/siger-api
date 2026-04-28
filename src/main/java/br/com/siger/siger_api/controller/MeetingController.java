@@ -10,7 +10,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 
-import org.apache.http.HttpStatus;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,7 +29,7 @@ public class MeetingController extends GenericBaseController<MeetingService, Mee
     @Operation(description = "Criação de uma nova reunião")
     public ResponseEntity<MeetingResponseDTO> create(@Valid @RequestBody MeetingRequestDTO dto){
         Meeting meeting = service.createFromDTO(dto);
-        return ResponseEntity.status(HttpStatus.SC_CREATED).body(MeetingResponseDTO.fromEntity(meeting));
+        return ResponseEntity.status(HttpStatus.CREATED).body(MeetingResponseDTO.fromEntity(meeting));
     }
 
     @PutMapping("/update/{id:[0-9]+}")

@@ -1,5 +1,16 @@
 package br.com.siger.siger_api.dto.participant;
-
-public record ParticipantRequestDTO(Long participantId, Long userId, Long meetingId,
-                                   String role, String participation) {
+ 
+import jakarta.validation.constraints.NotNull;
+ 
+public record ParticipantRequestDTO(
+ 
+        @NotNull(message = "O ID do usuário é obrigatório")
+        Long userId,
+ 
+        @NotNull(message = "O ID da reunião é obrigatório")
+        Long meetingId,
+ 
+        @NotNull(message = "O papel do participante é obrigatório")
+        String role
+) {
 }
