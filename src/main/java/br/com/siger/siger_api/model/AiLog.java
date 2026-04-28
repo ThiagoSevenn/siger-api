@@ -32,4 +32,8 @@ public class AiLog extends GenericBaseModel<Long> {
     @NotNull
     @Column(name = "usefull")
     private Boolean usefull;
+
+    @NotNull
+    @Column(name = "section")
+    private String section;
 }

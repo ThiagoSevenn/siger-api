@@ -2,6 +2,7 @@ package br.com.siger.siger_api.model;
 
 import br.com.siger.siger_api.enums.EnumTaskStatus;
 import br.com.siger.siger_api.global.model.GenericBaseModel;
+import br.com.siger.siger_api.model.User;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -24,6 +25,11 @@ public class Task extends GenericBaseModel<Long> {
     private String title;
 
     @NotNull
+    @Size(min = 1, max = 255)
+    @Column(name = "description")
+    private String description;
+
+    @NotNull
     @Enumerated(EnumType.STRING)
     @Column(name = "status")
     private EnumTaskStatus status;
@@ -35,4 +41,16 @@ public class Task extends GenericBaseModel<Long> {
     @NotNull
     @Column(name = "created_at")
     private LocalDateTime createdAt;
+
+    @NotNull
+    @Column(name = "updated_at")
+    private LocalDateTime updatedAt;
+
+    @ManyToOne
+    @JoinColumn(name = "assignee_id")
+    private User assignee;
+
+    @ManyToOne
+    @JoinColumn(name = "meeting_id")
+    private Meeting meeting;
 }
