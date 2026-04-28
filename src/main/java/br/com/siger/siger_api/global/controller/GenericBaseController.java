@@ -29,7 +29,7 @@ public class GenericBaseController<S extends IGenericBaseService<E, T>, E extend
     }
 
     // Editar
-    @PutMapping("/{id}")
+    @PutMapping("/{id:[0-9]+}")
     @Operation(description = "Alteração de entidade")
     public ResponseEntity<?> update(@PathVariable T id, @Valid @RequestBody E entity) {
         E savedEntity = service.update(id, entity);
@@ -37,14 +37,14 @@ public class GenericBaseController<S extends IGenericBaseService<E, T>, E extend
     }
 
     // Remover
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/{id:[0-9]+}")
     @Operation(description = "Exclusão de entidade")
     public void delete(@PathVariable T id) {
         service.delete(id);
     }
 
     // Buscar por Id
-    @GetMapping("/{id}")
+    @GetMapping("/{id:[0-9]+}")
     @Operation(description = "Buscar por Id")
     public ResponseEntity<?> findById(@PathVariable T id) throws Exception{
         E entity = service.findById(id);

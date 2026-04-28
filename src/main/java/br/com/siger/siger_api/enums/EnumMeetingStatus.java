@@ -8,7 +8,8 @@ import lombok.Getter;
 public enum EnumMeetingStatus {
     NAO_INICIADO("Não iniciado"),
     EM_ANDAMENTO("Em andamento"),
-    CONCLUIDO("Concluído");
+    CONCLUIDO("Concluído"),
+    CANCELADO("Cancelado");
 
     private String descprition;
 }
